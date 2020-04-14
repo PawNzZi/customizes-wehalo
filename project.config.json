@@ -1,0 +1,98 @@
+{
+	"miniprogramRoot": "miniprogram/",
+	"cloudfunctionRoot": "cloudfunctions/",
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": true,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"coverView": true,
+		"autoAudits": false,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		}
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.8.3",
+	"appid": "wxdbec304938543dd8",
+	"projectname": "13Record",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"cloudfunctionTemplateRoot": "cloudfunctionTemplate",
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"gamePlugin": {
+			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 3,
+			"list": [
+				{
+					"id": 0,
+					"name": "WeHalo",
+					"pathName": "pages/wehalo/wehalo",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "仪表盘",
+					"pathName": "pages/halo/halo",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 2,
+					"name": "POST",
+					"pathName": "pages/post/post",
+					"query": "postId=15",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "关注公众号",
+					"pathName": "pages/index/index",
+					"query": "",
+					"scene": 1011
+				},
+				{
+					"id": 4,
+					"name": "Friends",
+					"pathName": "pages/friends/friends",
+					"query": "",
+					"scene": null
+				}
+			]
+		}
+	}
+}

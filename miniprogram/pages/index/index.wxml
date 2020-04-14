@@ -1,0 +1,165 @@
+<wh-authorCard isHidden="{{aflag}}" id="authorCardId"></wh-authorCard>
+<scroll-view scroll-y class="DrawerPage {{modalName=='viewModal'?'show':''}}" bindscroll="onPageScroll" scroll-with-animation="true" style="background-color: {{skin?'#ffffff':'#ffffff'}};" bindscrolltolower="loadMore">
+    <cu-custom bgColor="bg-lightGrey" isBack="{{false}}" isCustom="{{false}}" isNav="{{scrollTop>120?false:true}}" isFixed="fixed">
+        <view slot="backText">返回</view> 
+        <!-- <view slot="content" class="text-shadow-meows">
+            <text class="text-white text-bold">{{BlogName}}</text>
+        </view> -->
+    </cu-custom>
+    <!-- <view bindtouchstart="touchStart" bindtouchend="touchEnd" class="flex justify-center align-center bg-white" style="width:100%; height:495rpx;  background-repeat: no-repeat; background-size: 100% 100%;"> 
+    </view> -->
+    <view class="home text-shadow-meow align-center" style="display:flex;flex-direction: row;" wx:if="{{Role==='管理员'}}"> 
+      <view bindtap="showModal" data-target="viewModal">
+        <view class="home-btn home-img shadow-blur"></view>
+      </view>
+    </view>
+     <swiper bindchange="cardSwiper" indicator-dots indicator-active-color="#495060" circular="true" autoplay="true" interval="5000" duration="500" class="flex justify-center align-center" style="width:100%; height:495rpx;  background-repeat: no-repeat; background-size: 100% 100%;">
+        <block wx:for="{{bannerPost? bannerPost:5}}" wx:for-item="bannerPost" wx:for-index="index">
+          <swiper-item>
+            <navigator url="../post/post?postId={{bannerPost.id}}" hover-class="none" open-type="navigate">
+            <image class="swiper-img" src="{{bannerPost.thumbnail}}">
+            </image> 
+             <view class="banner-title">{{bannerPost.title}}</view>
+             <view class="banner-time">{{bannerPost.createTime}}</view>
+             </navigator>
+          </swiper-item>
+        </block>
+      </swiper>
+       <view class="cu-bar search bg-white">
+        <view class="search-form round">
+            <text class="cuIcon-search"></text>
+            <input bindinput="Search" id="search" name="content" type="text" placeholder="搜索文章、关键词" confirm-type="search"></input>
+        </view>
+        <view class="action">
+            <button class="cu-btn" bindtap="SearchSubmit" style="background:#495060;color:#fff">搜索</button>
+        </view>
+    </view>
+    <!--分类-->
+      <scroll-view  scroll-x="true" bindscroll="scroll" style=" white-space: nowrap">
+         <view class="catogry-view">
+            <block wx:for="{{categoriesList}}">
+              <view class="{{index == cateCur?'select-view':'unselect-view'}}" data-slugname="{{item.slug}}" bindtap="getCategoryInfo" data-id="{{index}}">
+                <view>{{item.name}}</view>
+              </view>
+            </block>
+         </view>
+      </scroll-view>
+    <!--文章列表-->
+    <view class="article-view">
+      <block wx:for="{{postList}}" wx:key wx:for-index="index" wx:for-item="postList">
+          <navigator url="../post/post?postId={{postList.id}}" hover-class="none" open-type="navigate"  data-id="{{index}}">
+          <view class="cu-card article">
+            <view class="cu-item shadow">
+             <view class="title">
+              <view class="text-cut">{{postList.title}}</view>
+            </view>
+            <view class="content">
+      <image src="{{postList.thumbnail}}" mode="aspectFill"></image>
+      <view class="desc">
+        <view class="text-content">{{postList.summary}}</view>
+        <view>
+          <block wx:for="{{postList.tags}}" wx:key wx:for-index="indext" wx:for-item="tags">
+             <view class="cu-tag bg-red light sm round">{{tags.name}}</view>
+          </block>
+        </view>
+      </view>
+    </view>
+          </view>
+          </view>
+          </navigator>
+      </block>
+    </view>
+</scroll-view>
+<view class="DrawerClose {{modalName=='viewModal'?'show':''}}" bindtap="hideModal">
+    <text class="cuIcon-pullright"></text>
+</view>
+<scroll-view scroll-y class="DrawerWindow {{modalName=='viewModal'?'show':''}}" bindtouchstart="touchStart" bindtouchend="touchEnd">
+    <view class="cu-list menu card-menu margin-top-xl margin-bottom-xl padding-bottom" style="margin-top:100rpx;">
+        <view class="cu-list menu sm-border card-menu margin-top shadow-meow">
+            <view class="cu-item" style='min-height: 200rpx;'>
+                <view wx:if="{{!hasUserInfo && canIUse}}" class="content grid col-1">
+                    <view class="padding-sm text-sm flex justify-center">
+                        <text class="text-grey">允许微信授权后，可体验更多功能</text>
+                    </view>
+                    <view class="padding-sm flex justify-center">
+                        <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" class='cu-btn round bg-green shadow'>
+                            微信授权
+                        </button>
+                    </view>
+                </view>
+                <block wx:else>
+                    <view class="content flex justify-center align-center">
+                        <view class="flex-sub">
+                            <view class="cu-avatar xl round menu-img" style="background-image:url({{userInfo.avatarUrl}});"></view>
+                        </view>
+                        <view class="flex-twice grid col-1 ">
+                            <view class="text-lg margin-xs">
+                                <text class="text-black text-bold">{{userInfo.nickName}}</text>
+                            </view>
+                            <view class="margin-xs bg-white">
+                                <view class="cu-tag radius">{{Role}}</view>
+                            </view>
+                        </view>
+                    </view>
+                </block>
+            </view>
+            <!-- <view class="cu-item arrow">
+                <view class="content" bindtap="showMask">
+                    <text class="cuIcon-github text-gray menu-img"></text>
+                    <text class="text-grey">GitHub</text>
+                </view>
+            </view> -->
+            <!-- <view class="cu-item arrow">
+                <button class="cu-btn content" open-type="contact">
+                    <text class="cuIcon-communityfill text-lightBlue menu-img"></text>
+                    <text class="text-grey">联系作者</text>
+                </button>
+            </view> -->
+            <view wx:if="{{!roleFlag}}" class="cu-item arrow">
+                <view class="content">
+                    <text class="cuIcon-discoverfill text-gray menu-img"></text>
+                    <text class="text-grey">您不是管理员，无法访问</text>
+                </view>
+            </view>
+            <block wx:else>
+                <view class="cu-item arrow">
+                    <navigator class="content" hover-class="none" url="../halo/halo" open-type="navigate" bindtap="shutDownDrawer">
+                        <text class="cuIcon-discoverfill text-gray menu-img"></text>
+                        <text class="text-grey">Halo 仪表盘</text>
+                    </navigator>
+                </view>
+            </block>
+            <view class="cu-item arrow">
+                <navigator class="content" hover-class="none" url="../wehalo/wehalo" open-type="navigate" bindtap="shutDownDrawer">
+                    <text class="cuIcon-formfill text-gray menu-img"></text>
+                    <text class="text-grey">日记簿</text>
+                </navigator>
+            </view>
+            <view class="cu-item">
+                <view class="content">
+                    <text class="cuIcon-skinfill text-gray menu-img"></text>
+                    <text class="text-grey">炫图模式</text>
+                </view>
+                <view class="action">
+                    <switch class="switch-theme sm" bindchange="switchSex" checked="{{switchValue}}"></switch>
+                </view>
+            </view>
+            <!-- <view class="cu-item arrow">
+                <button class="cu-btn content" open-type="feedback">
+                    <text class="cuIcon-writefill text-lightBlue"></text>
+                    <text class="text-grey">意见反馈</text>
+                </button>
+            </view> -->
+            <view class="cu-item arrow">
+                <navigator class="content" hover-class="none" url="../friends/friends" open-type="navigate" bindtap="shutDownDrawer">
+                    <text class="cuIcon-group_fill text-gray menu-img"></text>
+                    <text class="text-grey">Friends</text>
+                </navigator>
+            </view>
+        </view>
+    </view>
+    <view class="text-xs flex justify-center" style="position:fixed; bottom:20rpx; width:100%; text-align:center;">
+        <view class="text-grey" style="margin-right:4rpx;">Powered by</view>
+        <view class="text-lightBlue">WeHalo</view>
+    </view>
+</scroll-view>

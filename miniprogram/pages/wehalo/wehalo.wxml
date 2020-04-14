@@ -1,0 +1,107 @@
+<scroll-view scroll-y class="DrawerPage" scroll-with-animation="true" style="background-color: {{skin?'#030852':'#ffffff'}};">
+
+    <cu-custom bgColor="bg-lightGrey" isBack="{{false}}" isCustom="{{true}}" isNav="{{false}}">
+        <view slot="backText">返回</view>
+        <view slot="content" class="text-shadow-meows">
+            <text class="text-white text-bold">日记簿</text>
+        </view>
+    </cu-custom>
+    <view class="bg-img padding-tb-xl" style="background-image: url('http://image.lingyikz.cn/image/top-bg_1579145147085.png');height: 414rpx;">
+    </view>
+ 
+    <!-- <view class="padding bg-white" style="padding-top：0;">
+        <view class="cu-progress radius striped active">
+            <view class="bg-olive" style="width:{{loading?'90%':''}};">90%</view>
+            <view class="bg-grey" style="width:{{loading?'10%':''}};">10%</view>
+        </view>
+    </view> -->
+
+    <view class="cu-timeline">
+        <!-- <view class="cu-item text-blue cuIcon-favorfill">
+            <view class="bg-blue content shadow-blur">
+                <wh-typeWriter whContent=" 13号档案馆日记簿"></wh-typeWriter>
+                <text decode="{{true}}" space="{{true}}">&nbsp;</text>
+            </view>
+        </view> -->
+        <block wx:for="{{journalList}}">
+          <view class="cu-time" style="width:200rpx">{{item.createTime}}</view>
+          <view class="cu-item" >
+            <view class="content shadow" style="background:#495060;color:#fff">
+               {{item.sourceContent}}
+            </view>
+          </view>
+        </block>
+      
+        
+        <!-- <view class="cu-item text-red">
+            <view class="bg-red content shadow-blur">
+                敬请期待 WeHalo 脱胎换骨 ~
+            </view>
+        </view>
+        <view class="cu-time">WeHalo_Meow...</view>
+
+        <view class="cu-item text-pink">
+            <view class="bg-pink content shadow-blur">
+                WeHalo 启动开发新版本支持最新版本 Halo 的 Meow 版本
+            </view>
+        </view>
+        <view class="cu-time">2019.07.01</view>
+
+        
+        <view class="cu-item text-mauve">
+            <view class="bg-mauve content shadow-blur">
+                利用微信云开发实现记录文章浏览数与文章点赞功能
+            </view>
+        </view>
+        <view class="cu-time">2019.01.30</view>
+
+        <view class="cu-item text-purple">
+            <view class="bg-purple content shadow-blur">
+                添加微信授权后才可评论文章
+            </view>
+        </view>
+        <view class="cu-item text-blue">
+            <view class="bg-blue content shadow-blur">
+                文章弹幕流评论
+            </view>
+        </view>
+        <view class="cu-time">2019.01.30</view>
+
+        <view class="cu-item text-green">
+            <view class="bg-green content shadow-blur">
+                完成对接口进行封装处理
+            </view>
+        </view>
+        <view class="cu-time">2019.01.08</view>
+
+        <view class="cu-item text-olive">
+            <view class="bg-olive content shadow-blur">
+                自定义导航栏，动画效果
+            </view>
+        </view>
+        <view class="cu-item text-pink">
+            <view class="bg-pink content shadow-blur">
+                生成海报功能
+            </view>
+        </view>
+        <view class="cu-item text-orange">
+            <view class="bg-orange content shadow-blur">
+                开源项目名 wxBlog 更改 WeHalo
+            </view>
+        </view>
+        <view class="cu-time">2018.12.07</view>
+
+        <view class="cu-item text-red cuIcon-favorfill">
+            <view class="content bg-red shadow-blur">
+                在GitHub上创建开源项目 wxBlog 
+            </view>
+        </view>
+        <view class="cu-time">2018.11.26</view> -->
+
+    </view>
+
+    <!-- <view class="text-xs flex justify-center" style="margin-bottom: 20rpx; width: 100%; text-align: center;">
+        <view class="text-grey" style="margin-right:4rpx;">Powered by</view>
+        <view class="text-lightBlue">WeHalo</view>
+    </view> -->
+</scroll-view>
