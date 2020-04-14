@@ -100,13 +100,13 @@ App({
         userInfo: null,
         skin: null,
         roleFlag: false,
-        url: "https://13archives.lingyikz.cn",//http://localhost:8090
-        BlogName: "13号档案馆",
-        token: "320393744",
-        highlightStyle: "dracula", //代码高亮样式，可用值default,darcula,dracula,tomorrow
-        adminOpenid: "o7Vka4y6Kv6yLrULn_uKuuYGGvMo",
-        HaloUser: "admin",
-        HaloPassword: "520weige"
+        url: "",//http://localhost:8090
+        BlogName: "",
+        token: "",//halo后台设置token
+        highlightStyle: "", //代码高亮样式，可用值default,darcula,dracula,tomorrow
+        adminOpenid: "",
+        HaloUser: "",//halo账号
+        HaloPassword: ""//halo密码
     }
     
 })
