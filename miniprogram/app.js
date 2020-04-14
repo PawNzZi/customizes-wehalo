@@ -1,6 +1,6 @@
 //app.js
 const Bmob = require('/utils/Bmob-2.2.2.min.js');
-Bmob.initialize("1c528f4a5283f11e", "245920");
+Bmob.initialize("", "");
 App({
     onLaunch: function() {
       Bmob.User.auth().then(res => {
